@@ -1,0 +1,10 @@
+{
+  "depends_on": "https://www.rkc.aeha.or.jp/files/recycle_price_list_2023_main_maker01.pdf",
+  "manufacturers": [
+    {
+      "code": "101",
+      "name": "パナソニック(株)　(山洋電機)"
+    }
+  ],
+  "updatedAt": "2023-04-01"
+}

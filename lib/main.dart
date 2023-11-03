@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -24,7 +26,18 @@ class ManufacturerCode2Name extends StatefulWidget {
 }
 
 class _ManufacturerCode2Name extends State<ManufacturerCode2Name> {
+  List _manufacturers = [];
   String _manufacturerName = '';
+
+  Future<void> _readJson() async {
+    final String response =
+        await rootBundle.loadString('assets/manufacturers.json');
+    final data = await json.decode(response);
+
+    setState(() {
+      _manufacturers = data["manufacturers"];
+    });
+  }
 
   void _updateManufacturerName(final String manufacturerName) {
     setState(() {
@@ -47,7 +60,7 @@ class _ManufacturerCode2Name extends State<ManufacturerCode2Name> {
           keyboardType: TextInputType.number,
           onChanged: (final text) => {
             if (text.length == 3)
-              {_updateManufacturerName(text)}
+              {_updateManufacturerName(_manufacturers.toString())}
             else
               {_updateManufacturerName('')}
           },
@@ -57,5 +70,11 @@ class _ManufacturerCode2Name extends State<ManufacturerCode2Name> {
       ),
       Text(_manufacturerName, style: const TextStyle(fontSize: 42))
     ]));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _readJson();
   }
 }
