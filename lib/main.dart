@@ -35,7 +35,8 @@ class _ManufacturerCode2Name extends State<ManufacturerCode2Name> {
   @override
   Widget build(final BuildContext context) {
     return Scaffold(
-      body: SizedBox(
+        body: Column(children: <Widget>[
+      SizedBox(
         width: 100,
         child: TextField(
           autofocus: true,
@@ -44,10 +45,17 @@ class _ManufacturerCode2Name extends State<ManufacturerCode2Name> {
             LengthLimitingTextInputFormatter(3),
           ],
           keyboardType: TextInputType.number,
+          onChanged: (final text) => {
+            if (text.length == 3)
+              {_updateManufacturerName(text)}
+            else
+              {_updateManufacturerName('')}
+          },
           style: const TextStyle(fontSize: 42),
           textAlign: TextAlign.center,
         ),
       ),
-    );
+      Text(_manufacturerName, style: const TextStyle(fontSize: 42))
+    ]));
   }
 }
