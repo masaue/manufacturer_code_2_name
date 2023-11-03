@@ -47,6 +47,8 @@ class _ManufacturerCode2Name extends State<ManufacturerCode2Name> {
 
   @override
   Widget build(final BuildContext context) {
+    String manufacturerName = 'Unknown';
+
     return Scaffold(
         body: Column(children: <Widget>[
       SizedBox(
@@ -60,7 +62,12 @@ class _ManufacturerCode2Name extends State<ManufacturerCode2Name> {
           keyboardType: TextInputType.number,
           onChanged: (final text) => {
             if (text.length == 3)
-              {_updateManufacturerName(_manufacturers.toString())}
+              {
+                manufacturerName = _manufacturers.firstWhere(
+                    (manufacturer) => manufacturer['code'] == text,
+                    orElse: () => {'name': 'Unknown'})['name'],
+                _updateManufacturerName(manufacturerName)
+              }
             else
               {_updateManufacturerName('')}
           },
