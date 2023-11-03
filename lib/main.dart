@@ -11,9 +11,10 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: Center(
-            child: TextField(
+        home: Scaffold(
+      body: SizedBox(
+        width: 100,
+        child: TextField(
           autofocus: true,
           inputFormatters: [
             FilteringTextInputFormatter.digitsOnly,
@@ -22,7 +23,8 @@ class MainApp extends StatelessWidget {
           keyboardType: TextInputType.number,
           style: const TextStyle(fontSize: 42),
           textAlign: TextAlign.center,
+        ),
       ),
-    );
+    ));
   }
 }
