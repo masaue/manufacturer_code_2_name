@@ -9,9 +9,32 @@ class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
+  Widget build(final BuildContext context) {
+    return const MaterialApp(
+      home: ManufacturerCode2Name(),
+    );
+  }
+}
+
+class ManufacturerCode2Name extends StatefulWidget {
+  const ManufacturerCode2Name({super.key});
+
+  @override
+  State<ManufacturerCode2Name> createState() => _ManufacturerCode2Name();
+}
+
+class _ManufacturerCode2Name extends State<ManufacturerCode2Name> {
+  String _manufacturerName = '';
+
+  void _updateManufacturerName(final String manufacturerName) {
+    setState(() {
+      _manufacturerName = manufacturerName;
+    });
+  }
+
+  @override
+  Widget build(final BuildContext context) {
+    return Scaffold(
       body: SizedBox(
         width: 100,
         child: TextField(
@@ -25,6 +48,6 @@ class MainApp extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
       ),
-    ));
+    );
   }
 }
