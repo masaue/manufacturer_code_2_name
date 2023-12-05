@@ -18,4 +18,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/manufacturers.json
+    - assets/manufacturers_01.json
+    - assets/manufacturers_02.json
