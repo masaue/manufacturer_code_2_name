@@ -29,13 +29,19 @@ class _ManufacturerCode2Name extends State<ManufacturerCode2Name> {
   List _manufacturers = [];
   String _manufacturerName = '';
 
-  Future<void> _readJson() async {
-    final String response =
-        await rootBundle.loadString('assets/manufacturers.json');
-    final data = await json.decode(response);
+  Future<void> _readJsons() async {
+    final String response0 =
+        await rootBundle.loadString('assets/manufacturers_00.json');
+    final data0 = await json.decode(response0);
+    final String response1 =
+        await rootBundle.loadString('assets/manufacturers_01.json');
+    final data1 = await json.decode(response1);
+    final String response2 =
+        await rootBundle.loadString('assets/manufacturers_02.json');
+    final data2 = await json.decode(response2);
 
     setState(() {
-      _manufacturers = data["manufacturers"];
+      _manufacturers = [...data0["manufacturers"], ...data1["manufacturers"], ...data2["manufacturers"]];
     });
   }
 
@@ -82,6 +88,6 @@ class _ManufacturerCode2Name extends State<ManufacturerCode2Name> {
   @override
   void initState() {
     super.initState();
-    _readJson();
+    _readJsons();
   }
 }
