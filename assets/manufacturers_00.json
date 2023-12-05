@@ -1,0 +1,14 @@
+{
+  "depends_on": "",
+  "manufacturers": [
+    {
+      "code": "789",
+      "name": "Hanx 株式会社"
+    },
+    {
+      "code": "790",
+      "name": "BougeRV Japan 株式会社"
+    }
+  ],
+  "updatedAt": "2023-12-01"
+}
